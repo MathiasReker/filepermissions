@@ -24,7 +24,7 @@ class FilePermissions extends Module
         $this->bootstrap = true;
         parent::__construct();
         $this->displayName = $this->l('File permissions');
-        $this->description = $this->l('This tool will change directory permissions to 744 and file permissions to 644')
+        $this->description = $this->l('This tool will change directory permissions to 744 and file permissions to 644');
         $this->ps_versions_compliancy = [
             'min' => '1.7',
             'max' => _PS_VERSION_,
@@ -141,7 +141,7 @@ class FilePermissions extends Module
                     'icon' => 'icon-cogs',
                 ],
                 'submit' => [
-                    'title' => $this->trans('Fix filepermissions', [], 'Modules.filepermissions.Admin'),
+                    'title' => $this->trans('Fix permissions', [], 'Modules.filepermissions.Admin'),
                     'class' => 'btn btn-default pull-right',
                     'name' => 'submitChangePermissions',
                 ],
