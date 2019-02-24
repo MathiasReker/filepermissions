@@ -1,4 +1,4 @@
-# Filepermissions
+# Make directory- and folderpermissions secure
 
 This module will change directory permissions to 744 and file permissions to 644 with a single click.
 
