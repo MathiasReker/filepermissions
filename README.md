@@ -6,7 +6,7 @@ Step 1: Download latest version of the module from here: https://github.com/Math
 
 Step 2: Upload the module to your PrestaShop 1.7.x store.
 
-Step 3: Go to configuration of the module and click on 'Fix permissions' and wait for like 10-30 sec.
+Step 3: Go to configuration of the module and click on 'Fix permissions' and wait until the job is done (10-30 sec).
 
 Thats it! The file permission should be good now. If the file permissions could not be changed, you will get a message about that.
 Now you can uninstall the module if you want.
