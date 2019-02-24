@@ -21,15 +21,14 @@ class FilePermissions extends Module
         $this->version = '1.0.0';
         $this->author = 'Mathias Reker';
         $this->need_instance = 1;
-
         $this->bootstrap = true;
-
         parent::__construct();
-
         $this->displayName = $this->l('File permissions');
-        $this->description = $this->l('This tool will change directory permissions to 744 and file permissions to 644');
-
-        $this->ps_versions_compliancy = ['min' => '1.7', 'max' => _PS_VERSION_];
+        $this->description = $this->l('This tool will change directory permissions to 744 and file permissions to 644')
+        $this->ps_versions_compliancy = [
+            'min' => '1.7',
+            'max' => _PS_VERSION_,
+        ];
     }
 
     public function install()
@@ -84,6 +83,7 @@ class FilePermissions extends Module
         $this->ok_file = '';
         $this->nok_dir = '';
         $this->nok_file = '';
+
         $html = '<h1>' . $this->trans('This tool will fix unsecure file- and folderpermissions', [], 'Modules.filepermissions.Admin') . '</h1><br>';
 
         if (Tools::isSubmit('submitChangePermissions')) {
@@ -113,13 +113,11 @@ class FilePermissions extends Module
     protected function renderForm()
     {
         $helper = new HelperForm();
-
         $helper->show_toolbar = false;
         $helper->table = $this->table;
         $helper->module = $this;
         $helper->default_form_language = $this->context->language->id;
         $helper->allow_employee_form_lang = Configuration::get('PS_BO_ALLOW_EMPLOYEE_FORM_LANG', 0);
-
         $helper->identifier = $this->identifier;
         $helper->submit_action = 'submitFilepermissionsModule';
         $helper->currentIndex = $this->context->link->getAdminLink('AdminModules', false)
