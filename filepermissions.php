@@ -82,6 +82,8 @@ class FilePermissions extends Module
     {
         $this->ok_dir = '';
         $this->ok_file = '';
+        $this->nok_dir = '';
+        $this->nok_file = '';
         $html = '<h1>' . $this->trans('This tool will fix unsecure file- and folderpermissions', [], 'Modules.filepermissions.Admin') . '</h1><br>';
 
         if (Tools::isSubmit('submitChangePermissions')) {
