@@ -55,20 +55,20 @@ class FilePermissions extends Module
                     $fullpath = $dir . '/' . $file;
                     if (!is_dir($fullpath)) {
                         if (chmod($fullpath, $perms['file'])) {
-                            $this->ok_file .= '<span style="font-weight:bold;">File</span> ' .
-                            $fullpath . ' permissions changed to ' . decoct($perms['file']) . '<br>';
+                            $this->ok_file .= '<span style="font-weight:bold;">File</span> '
+                            . $fullpath . ' permissions changed to ' . decoct($perms['file']) . '<br>';
                         } else {
-                            $this->nok_file .= '<span style="font-weight:bold;">Failed</span> to set file permissions on ' .
-                            $fullpath . '<br>';
+                            $this->nok_file .= '<span style="font-weight:bold;">Failed</span> to set file permissions on '
+                            . $fullpath . '<br>';
                         }
                     } else {
                         if (chmod($fullpath, $perms['folder'])) {
-                            $this->ok_dir .= '<span style="font-weight:bold;">Directory</span> ' .
-                            $fullpath . ' permissions changed to ' . decoct($perms['folder']) . '<br>';
+                            $this->ok_dir .= '<span style="font-weight:bold;">Directory</span> '
+                            . $fullpath . ' permissions changed to ' . decoct($perms['folder']) . '<br>';
                             $this->chmodFileFolder($fullpath);
                         } else {
-                            $this->nok_dir .= '<span style="font-weight:bold;">Failed</span> to set directory permissions on ' .
-                            $fullpath . '<br>';
+                            $this->nok_dir .= '<span style="font-weight:bold;">Failed</span> to set directory permissions on '
+                            . $fullpath . '<br>';
                         }
                     }
                 }
@@ -84,25 +84,30 @@ class FilePermissions extends Module
         $this->nok_dir = '';
         $this->nok_file = '';
 
-        $html = '<h1>' . $this->trans('This tool will fix unsecure file- and folderpermissions', [], 'Modules.filepermissions.Admin') . '</h1><br>';
+        $html = '<h1>' . $this->trans('This tool will fix unsecure file- and folderpermissions', [], 'Modules.filepermissions.Admin')
+        . '</h1><br>';
 
         if (Tools::isSubmit('submitChangePermissions')) {
             $this->chmodFileFolder(_PS_ROOT_DIR_);
 
             if (!empty($this->ok_dir)) {
-                $html .= '<h2>' . $this->trans('Directories has been changed to 755', [], 'Modules.filepermissions.Admin') . '</h2>';
+                $html .= '<h2>' . $this->trans('Directories has been changed to 755', [], 'Modules.filepermissions.Admin')
+                . '</h2>';
                 $html .= $this->displayConfirmation($this->ok_dir);
             }
             if (!empty($this->ok_file)) {
-                $html .= '<h2>' . $this->trans('Files has been changed to 644', [], 'Modules.filepermissions.Admin') . '</h2>';
+                $html .= '<h2>' . $this->trans('Files has been changed to 644', [], 'Modules.filepermissions.Admin')
+                . '</h2>';
                 $html .= $this->displayConfirmation($this->ok_file);
             }
             if (!empty($this->nok_dir)) {
-                $html .= '<h2>' . $this->trans('Directories has not been changed to 755', [], 'Modules.filepermissions.Admin') . '</h2>';
+                $html .= '<h2>' . $this->trans('Directories has not been changed to 755', [], 'Modules.filepermissions.Admin')
+                . '</h2>';
                 $html .= $this->displayWarning($this->nok_dir);
             }
             if (!empty($this->nok_file)) {
-                $html .= '<h2>' . $this->trans('Files has not been changed to 644', [], 'Modules.filepermissions.Admin') . '</h2>';
+                $html .= '<h2>' . $this->trans('Files has not been changed to 644', [], 'Modules.filepermissions.Admin')
+                . '</h2>';
                 $html .= $this->displayWarning($this->nok_file);
             }
         }
@@ -121,7 +126,7 @@ class FilePermissions extends Module
         $helper->identifier = $this->identifier;
         $helper->submit_action = 'submitFilepermissionsModule';
         $helper->currentIndex = $this->context->link->getAdminLink('AdminModules', false)
-            . '&configure=' . $this->name . '&tab_module=' . $this->tab . '&module_name=' . $this->name;
+        . '&configure=' . $this->name . '&tab_module=' . $this->tab . '&module_name=' . $this->name;
         $helper->token = Tools::getAdminTokenLite('AdminModules');
 
         return $helper->generateForm([$this->getConfigForm()]);
