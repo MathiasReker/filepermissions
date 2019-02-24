@@ -1,6 +1,6 @@
 # Make directory- and folderpermissions secure
 
-This module will change directory permissions to 744 and file permissions to 644.
+This module will change directory permissions to 755 and file permissions to 644.
 
 Step 1: Download latest version of the module from here: https://github.com/MathiasReker/filepermissions/releases/latest
 
