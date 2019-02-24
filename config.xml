@@ -3,7 +3,7 @@
 	<name>filepermissions</name>
 	<displayName><![CDATA[File permissions]]></displayName>
 	<version><![CDATA[1.0.0]]></version>
-	<description><![CDATA[This tool will change directory permissions to 744 and file permissions to 644]]></description>
+	<description><![CDATA[This tool will change directory permissions to 755 and file permissions to 644]]></description>
 	<author><![CDATA[Mathias Reker]]></author>
 	<tab><![CDATA[administration]]></tab>
 	<is_configurable>1</is_configurable>
