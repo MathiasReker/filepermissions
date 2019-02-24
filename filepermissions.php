@@ -1,6 +1,5 @@
 <?php
 /**
- *
  *  @author    Mathias Reker
  *  @copyright 2019 Mathias Reker
  *  @license   https://opensource.org/licenses/afl-3.0.php Academic Free License (AFL 3.0)
