@@ -51,7 +51,7 @@ class FilePermissions extends Module
 
         if ($dh) {
             while (false !== ($file = readdir($dh))) {
-                if ($file != '.' && $file != '..') {
+                if ('.' != $file && '..' != $file) {
                     $fullpath = $dir . '/' . $file;
                     if (!is_dir($fullpath)) {
                         if (chmod($fullpath, $perms['file'])) {
