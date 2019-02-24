@@ -18,7 +18,7 @@ class FilePermissions extends Module
     {
         $this->name = 'filepermissions';
         $this->tab = 'administration';
-        $this->version = '1.0.0';
+        $this->version = '1.0.2';
         $this->author = 'Mathias Reker';
         $this->need_instance = 1;
         $this->bootstrap = true;
