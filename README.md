@@ -1,4 +1,4 @@
-# Make directory- and folderpermissions secure
+# Make directory- and filepermissions secure
 
 This module will change directory permissions to 755 and file permissions to 644.
 
