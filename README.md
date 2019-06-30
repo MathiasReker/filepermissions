@@ -13,4 +13,4 @@ Now you can uninstall the module if you want.
 
 [![Demo](https://raw.githubusercontent.com/MathiasReker/filepermissions/master/demo.png)](https://raw.githubusercontent.com/MathiasReker/filepermissions/master/demo.png)
 
-##Check all my modules here: https://addons.prestashop.com/en/2_community-developer?contributor=837041
+## Check all my modules here: https://addons.prestashop.com/en/2_community-developer?contributor=837041

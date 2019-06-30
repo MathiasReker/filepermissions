@@ -41,42 +41,6 @@ class FilePermissions extends Module
         return parent::uninstall();
     }
 
-    protected function chmodFileFolder($dir)
-    {
-        $perms = [];
-        $perms['file'] = 0644;
-        $perms['folder'] = 0755;
-
-        $dh = @opendir($dir);
-
-        if ($dh) {
-            while (false !== ($file = readdir($dh))) {
-                if ('.' != $file && '..' != $file) {
-                    $fullpath = $dir . '/' . $file;
-                    if (!is_dir($fullpath)) {
-                        if (chmod($fullpath, $perms['file'])) {
-                            $this->ok_file .= '<span style="font-weight:bold;">File</span> '
-                            . $fullpath . ' permissions changed to ' . decoct($perms['file']) . '<br>';
-                        } else {
-                            $this->nok_file .= '<span style="font-weight:bold;">Failed</span> to set file permissions on '
-                            . $fullpath . '<br>';
-                        }
-                    } else {
-                        if (chmod($fullpath, $perms['folder'])) {
-                            $this->ok_dir .= '<span style="font-weight:bold;">Directory</span> '
-                            . $fullpath . ' permissions changed to ' . decoct($perms['folder']) . '<br>';
-                            $this->chmodFileFolder($fullpath);
-                        } else {
-                            $this->nok_dir .= '<span style="font-weight:bold;">Failed</span> to set directory permissions on '
-                            . $fullpath . '<br>';
-                        }
-                    }
-                }
-            }
-            closedir($dh);
-        }
-    }
-
     public function getContent()
     {
         $this->ok_dir = '';
@@ -113,6 +77,42 @@ class FilePermissions extends Module
         }
 
         return $html . $this->renderForm();
+    }
+
+    protected function chmodFileFolder($dir)
+    {
+        $perms = [];
+        $perms['file'] = 0644;
+        $perms['folder'] = 0755;
+
+        $dh = @opendir($dir);
+
+        if ($dh) {
+            while (false !== ($file = readdir($dh))) {
+                if ('.' != $file && '..' != $file) {
+                    $fullpath = $dir . '/' . $file;
+                    if (!is_dir($fullpath)) {
+                        if (chmod($fullpath, $perms['file'])) {
+                            $this->ok_file .= '<span style="font-weight:bold;">File</span> '
+                            . $fullpath . ' permissions changed to ' . decoct($perms['file']) . '<br>';
+                        } else {
+                            $this->nok_file .= '<span style="font-weight:bold;">Failed</span> to set file permissions on '
+                            . $fullpath . '<br>';
+                        }
+                    } else {
+                        if (chmod($fullpath, $perms['folder'])) {
+                            $this->ok_dir .= '<span style="font-weight:bold;">Directory</span> '
+                            . $fullpath . ' permissions changed to ' . decoct($perms['folder']) . '<br>';
+                            $this->chmodFileFolder($fullpath);
+                        } else {
+                            $this->nok_dir .= '<span style="font-weight:bold;">Failed</span> to set directory permissions on '
+                            . $fullpath . '<br>';
+                        }
+                    }
+                }
+            }
+            closedir($dh);
+        }
     }
 
     protected function renderForm()
